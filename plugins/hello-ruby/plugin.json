@@ -1,0 +1,8 @@
+{
+  "id": "hello-ruby",
+  "name": "Hello Ruby",
+  "version": "1.0.0",
+  "author": "Ruby",
+  "description": "A tiny example plugin: a page, a settings section, and a toast.",
+  "entry": "index.js"
+}
