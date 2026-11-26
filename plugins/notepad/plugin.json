@@ -1,0 +1,9 @@
+{
+  "id": "notepad",
+  "name": "Notepad",
+  "version": "1.0.0",
+  "author": "Ruby",
+  "description": "Quick notes inside Ruby: codes, trade ideas, things to try. Saved automatically on this PC.",
+  "entry": "index.js",
+  "icon": "icon.svg"
+}

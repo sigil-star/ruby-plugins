@@ -88,6 +88,12 @@ for (const id of ids) {
   if (!fs.existsSync(path.join(dir, entry))) fail(id, `entry file ${entry} is missing`);
   if (/ruby launcher|^ruby$/i.test(m.name)) fail(id, "plugin name can't be 'Ruby' / 'Ruby Launcher' (see TRADEMARK)");
   if (!fs.existsSync(path.join(dir, "README.md"))) warn(id, "no README.md");
+  if (m.icon !== undefined) {
+    const icon = String(m.icon);
+    if (/\.\.|^\/|\\|:/.test(icon) || !/\.(png|svg|webp)$/i.test(icon)) fail(id, "icon must be a png, svg or webp file in the plugin folder");
+    else if (!fs.existsSync(path.join(dir, icon))) fail(id, `icon file ${icon} is missing`);
+    else if (fs.statSync(path.join(dir, icon)).size > 256 * 1024) fail(id, "icon is over 256 KB");
+  } else warn(id, "no icon (add one: a square png, svg or webp)");
 
   // Files.
   const files = walk(dir);
@@ -107,6 +113,12 @@ for (const id of ids) {
     total += size;
     if (size > MAX_FILE) fail(id, `${rel}: over 10 MB`);
 
+    if (ext === ".svg") {
+      const svg = fs.readFileSync(f.p, "utf8");
+      if (/<script|\bon[a-z]+\s*=|javascript:|<foreignObject|xlink:href\s*=\s*["'](?!#)|\bhref\s*=\s*["'](?!#)/i.test(svg)) {
+        fail(id, `${rel}: SVGs can't contain scripts, event handlers or external links`);
+      }
+    }
     if (ext === ".js" || ext === ".css") {
       const src = fs.readFileSync(f.p, "utf8");
       const longest = src.split("\n").reduce((n, l) => Math.max(n, l.length), 0);

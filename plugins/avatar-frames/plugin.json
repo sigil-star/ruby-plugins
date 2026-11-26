@@ -1,0 +1,9 @@
+{
+  "id": "avatar-frames",
+  "name": "Avatar Frames",
+  "version": "1.0.0",
+  "author": "Ruby",
+  "description": "Animated rings around every avatar that change color with online status: online, in game, in Studio.",
+  "entry": "index.js",
+  "icon": "icon.svg"
+}

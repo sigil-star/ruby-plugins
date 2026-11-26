@@ -1,0 +1,9 @@
+{
+  "id": "session-stats",
+  "name": "Session Stats",
+  "version": "1.0.0",
+  "author": "Ruby",
+  "description": "Tracks how long you play: today, this week, your longest session and a session history.",
+  "entry": "index.js",
+  "icon": "icon.svg"
+}

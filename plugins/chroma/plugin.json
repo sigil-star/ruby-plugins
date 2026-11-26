@@ -1,0 +1,9 @@
+{
+  "id": "chroma",
+  "name": "Chroma",
+  "version": "1.0.0",
+  "author": "Ruby",
+  "description": "Slowly cycles Ruby's accent color through the rainbow. Pick the speed in Settings.",
+  "entry": "index.js",
+  "icon": "icon.svg"
+}
